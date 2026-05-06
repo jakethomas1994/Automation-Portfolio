@@ -1,0 +1,23 @@
+{
+  "name": "automation-portfolio",
+  "version": "1.0.0",
+  "description": "Automation Portfolio of Playwright Tests",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakethomas1994/Automation-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jakethomas1994/Automation-Portfolio/issues"
+  },
+  "homepage": "https://github.com/jakethomas1994/Automation-Portfolio#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}
