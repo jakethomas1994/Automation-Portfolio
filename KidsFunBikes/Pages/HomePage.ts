@@ -1,15 +1,23 @@
-import { type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HomePage {
   readonly page: Page;
-  readonly searchInput: Locator;
   readonly searchButton: Locator;
   readonly logo: Locator;
+  readonly login: Locator;
   readonly cargrid: Locator;
   readonly cookieAcceptButton: Locator;
   readonly gridUsedCars: Locator;
   readonly gridQuads: Locator;
   readonly gridOffRoad: Locator;
+  readonly browseNow: Locator;
+  readonly reviews: Locator;
+  readonly trustpilotReviewLink: Locator;  
+  readonly footerBikes: Locator[];
+  readonly emailField: Locator;
+  readonly searchbox: Locator;
+  readonly productInBasket: Locator;
+  readonly quantityBasket: Locator;
 
 
 
@@ -19,14 +27,30 @@ export class HomePage {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'MotoX1 Warrington' }).first();
     this.cargrid = page.getByRole('img', { name: 'MotoX1 hero image 3' });
+    this.emailField = page.getByRole('textbox', { name: 'Email' });
+    this.searchbox = page.getByRole('combobox', { name: 'Search' });
+    this.productInBasket = page.getByRole('cell', { name: 'Revvi 12" Kids Electric Bike £325.00 Colour: Black' });
+    this.quantityBasket = page.getByRole('spinbutton', { name: 'Quantity for Revvi 12&quot;' })
+
+
+// constructor
+    this.trustpilotReviewLink = page.locator('a[href*="trustpilot.com/review/www.motox1-atv.co.uk"]');   
+    this.login = page.getByRole('link', { name: 'Log in' });
     // Define your locators once here
-    this.searchInput = page.locator('#search-input'); 
     this.searchButton = page.getByRole('button', { name: 'Search' });
     this.cookieAcceptButton = page.getByRole('button', { name: 'Accept' });
-    // Inside your HomePage class constructor
+    this.browseNow = page.getByRole('link', { name: 'Browse now' });
+    this.reviews = page.getByText('★★★★★');    // Inside your HomePage class constructor
     this.gridUsedCars = page.getByRole('link', { name: 'Hand-picked stock Used Cars' });
     this.gridQuads = page.getByRole('link', { name: 'Ride ready Quads &' });
     this.gridOffRoad = page.getByRole('link', { name: 'Kids & adults Off-Road Bikes' });
+
+    this.footerBikes = [
+        page.getByRole('link', { name: 'New Revvi 20" Electric Bike' }),
+        page.getByRole('link', { name: 'New Revvi 18” electric bike' }),
+        page.getByRole('link', { name: 'PRE ORDER JUNE - New Revvi 16' }),
+        page.getByRole('link', { name: 'Revvi Junior 16” Plus' }),
+];
   }
 
 async navigate() {
@@ -42,10 +66,24 @@ async navigate() {
   } catch (e) {
     console.log('Cookie banner did not appear, moving on...');
   }
+
+}
+async verifyReviewsVisible() {
+  await expect(this.reviews).toHaveCount(6);
+  for (let i = 0; i < 6; i++) {
+    await expect(this.reviews.nth(i)).toBeVisible();
+  }
 }
 
-  async searchForProduct(productName: string) {
-    await this.searchInput.fill(productName);
-    await this.searchButton.click();
+async verifyTrustpilotReviewLinkVisible() {
+  await this.page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+  await this.trustpilotReviewLink.scrollIntoViewIfNeeded();
+  await expect(this.trustpilotReviewLink).toBeVisible({ timeout: 10000 });
+}
+
+async verifyFooterBikesVisible() {
+  for (const bike of this.footerBikes) {
+    await expect(bike).toBeVisible();
   }
+}
 }

@@ -9,25 +9,34 @@ test.describe('MotoX1 Home Page Test', () => {
     await homePage.navigate(); 
   });
 
-  test('should have the correct title', async ({ page }) => {
+  test('should be able to see all elements on page', async ({ page }) => {
     await expect(page).toHaveTitle(/MotoX1/); 
-  });
-
-  test('should be able to select the login icon', async ({ page }) => {
-    await page.getByRole('link', { name: 'Log in' }).click();
-  });
-
-  test('should be able to select the motox1 logo icon', async () => {
-    await homePage.logo.click();
-  });
-
-  test('should be able to see the car grid', async () => {
+    // await expect(homePage.login).toBeVisible();
+    await expect(homePage.logo).toBeVisible();
+    await expect(homePage.searchButton).toBeVisible();
     await expect(homePage.cargrid).toBeVisible(); 
-}); 
+    await expect(homePage.gridUsedCars).toBeVisible();
+    await expect(homePage.gridQuads).toBeVisible();
+    await expect(homePage.gridOffRoad).toBeVisible();
+    await expect(homePage.browseNow).toBeVisible();
+    // await homePage.verifyTrustpilotReviewLinkVisible();   
+    await expect(homePage.emailField).toBeVisible()
+    await homePage.verifyReviewsVisible();
+    await homePage.verifyFooterBikesVisible();
+  });   
 
- test('should be able to see the three grid rail', async () => {
-      await expect(homePage.gridUsedCars).toBeVisible();
-      await expect(homePage.gridQuads).toBeVisible();
-      await expect(homePage.gridOffRoad).toBeVisible();
-}); 
+    test('should be able to add an item to the checkout and remove it', async ({ page }) => {
+      await homePage.searchButton.click();
+      await homePage.searchbox.click();
+      await homePage.searchbox.fill('kids revvi');
+      await page.getByRole('link', { name: 'Revvi 12 Revvi 12" Kids' }).click();
+      await page.getByRole('button', { name: 'Add To Basket • £' }).click();
+      await expect(homePage.productInBasket).toBeVisible();
+      await expect (homePage.quantityBasket).toBeVisible();
+      await homePage.quantityBasket.click();
+      await homePage.quantityBasket.fill('0');
+      await page.locator('cart-items').click();
+      await page.getByRole('heading', { name: 'Your cart is empty' }).click();
+  });        
+
 });
