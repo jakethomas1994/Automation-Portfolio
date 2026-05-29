@@ -26,7 +26,7 @@ export class HomePage {
     this.cargrid = page.getByRole('img', { name: 'MotoX1 hero image 3' });
     this.emailField = page.getByRole('textbox', { name: 'Email' });
     this.searchbox = page.getByRole('combobox', { name: 'Search' });
-    this.productInBasket = page.getByRole('cell', { name: 'Revvi 12" Kids Electric Bike £325.00 Colour: Black' });
+    this.productInBasket = page.getByRole('link', { name: 'Cart 1 item' })
     this.quantityBasket = page.getByRole('spinbutton', { name: 'Quantity for Revvi 12&quot;' })
 
 

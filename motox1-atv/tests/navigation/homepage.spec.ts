@@ -1,15 +1,9 @@
-import { test, expect } from '@playwright/test';
-import { HomePage } from '../../pages/HomePage';
+import { test, expect } from '../../fixtures';
+
 
 test.describe('MotoX1 Home Page Test', () => {
-  let homePage: HomePage;
 
-  test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    await homePage.navigate(); 
-  });
-
-  test('should be able to see all elements on page', async ({ page }) => {
+  test('should be able to see all elements on page', async ({  homePage, page }) => {
     await expect(page).toHaveTitle(/MotoX1/); 
     // await expect(homePage.login).toBeVisible();
     await expect(homePage.logo).toBeVisible();
