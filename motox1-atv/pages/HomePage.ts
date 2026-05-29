@@ -20,9 +20,6 @@ export class HomePage {
   readonly quantityBasket: Locator;
 
 
-
-  readonly url = 'https://www.motox1-atv.co.uk/';
-
   constructor(page: Page) {
     this.page = page;
     this.logo = page.getByRole('link', { name: 'MotoX1 Warrington' }).first();
@@ -55,7 +52,8 @@ export class HomePage {
 
 async navigate() {
   // 1. Go to the URL and wait until the network is quiet
-  await this.page.goto(this.url, { waitUntil: 'networkidle' });
+await this.page.goto('/', { waitUntil: 'networkidle' });
+  
 
   // 2. Give the cookie banner a moment to animate in
   try {
