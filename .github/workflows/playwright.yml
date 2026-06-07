@@ -6,29 +6,20 @@ on:
     branches: [ main, master ]
 jobs:
   test:
-    timeout-minutes: 90
+    timeout-minutes: 30
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-jammy
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
     - name: Install dependencies
       run: npm ci
-      working-directory: motox1-atv
-    - name: Cache Playwright browsers
-      uses: actions/cache@v4
-      id: playwright-cache
-      with:
-        path: ~/.cache/ms-playwright
-        key: playwright-${{ hashFiles('motox1-atv/package-lock.json') }}
-    - name: Install Playwright Browsers
-      if: steps.playwright-cache.outputs.cache-hit != 'true'
-      run: node_modules/.bin/playwright install chromium
       working-directory: motox1-atv
     - name: Run Playwright tests
       run: npx playwright test --project=chromium
       working-directory: motox1-atv
+      env:
+        HOME: /root
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
