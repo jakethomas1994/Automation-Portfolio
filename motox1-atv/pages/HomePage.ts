@@ -66,6 +66,7 @@ await this.page.goto('/', { waitUntil: 'networkidle' });
   }
 
 }
+
 async verifyReviewsVisible() {
   await expect(this.reviews).toHaveCount(6);
   for (let i = 0; i < 6; i++) {
