@@ -1,17 +1,17 @@
-
 {
   "name": "motox1-atv-tests",
   "version": "1.0.0",
   "description": "Playwright test suite for motox1-atv.co.uk",
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.58.2",
     "@types/node": "^25.0.6"
   },
- "scripts": {
-  "test": "playwright test",
-  "test:headed": "playwright test --headed",
-  "test:ui": "playwright test --ui",
-  "test:report": "playwright show-report",
-  "test:chromium": "playwright test --project=chromium"
-}
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "test:chromium": "playwright test --project=chromium"
+  }
 }
