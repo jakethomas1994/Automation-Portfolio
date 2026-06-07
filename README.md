@@ -84,7 +84,7 @@ npx playwright show-report
 
 ## Future Improvements
 
-- [ ] Accessibility testing with axe-core
+- [x] Accessibility testing with axe-core
 - [ ] API-level tests for network requests (price/stock validation)
 - [ ] Shared cookie consent helper to remove duplication across page objects
 - [ ] Browser caching in GitHub Actions to speed up CI
