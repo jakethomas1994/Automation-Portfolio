@@ -24,7 +24,7 @@ jobs:
         key: playwright-${{ hashFiles('motox1-atv/package-lock.json') }}
     - name: Install Playwright Browsers
       if: steps.playwright-cache.outputs.cache-hit != 'true'
-      run: npx playwright install chromium
+      run: node_modules/.bin/playwright install chromium
       working-directory: motox1-atv
     - name: Run Playwright tests
       run: npx playwright test --project=chromium
