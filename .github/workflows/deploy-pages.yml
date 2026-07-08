@@ -1,0 +1,65 @@
+name: Deploy CV site to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+# Allow one concurrent deployment, cancelling in-progress runs
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # 1. Run the Playwright suite and capture its HTML report
+  report:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.59.1-jammy
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: npm ci
+        working-directory: motox1-atv
+      - name: Run Playwright tests
+        run: npx playwright test --project=chromium
+        working-directory: motox1-atv
+        continue-on-error: true   # publish an honest report even if a test is red
+        env:
+          HOME: /root
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: motox1-atv/playwright-report
+          retention-days: 30
+
+  # 2. Pull the report into the site and deploy everything to Pages
+  deploy:
+    needs: report
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Playwright report to site
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report
+          path: site/reports
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
