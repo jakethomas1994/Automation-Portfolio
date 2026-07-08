@@ -328,6 +328,22 @@ em { font-style: normal; color: var(--accent); }
   width: 100%; height: 100%; object-fit: cover; object-position: top center;
 }
 
+/* "Previously" employer card (Atom bank) */
+.feature--prev { margin-top: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 0; }
+@media (min-width: 900px) { .feature--prev { grid-template-columns: .55fr 1.45fr; } }
+.feature__media--atom {
+  padding: clamp(2rem, 4vw, 3rem);
+  background: radial-gradient(90% 100% at 50% 20%, color-mix(in srgb, #5b2a86 22%, transparent), transparent 80%), var(--bg-tint);
+}
+.feature__media--atom .tile__appicon {
+  display: block;
+  width: clamp(88px, 11vw, 120px); height: auto; aspect-ratio: 1;
+  border-radius: 24%;
+  box-shadow: var(--shadow-float);
+  transition: transform .5s var(--ease);
+}
+.feature--prev:hover .tile__appicon { transform: scale(1.06) rotate(-3deg); }
+
 .feature__meta { display: flex; align-items: center; gap: .85rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
 .feature__kicker { font-size: .74rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .13em; }
 .feature__id { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
