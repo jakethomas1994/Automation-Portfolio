@@ -86,20 +86,20 @@
           <span><img src="assets/icons/bbc-sounds.png" alt="" />BBC Sounds</span>
           <span><img src="assets/icons/bbc-news.png" alt="" />BBC News</span>
           <span><img src="assets/icons/bbc-sport.png" alt="" />BBC Sport</span>
-          <span>BBC World Service</span>
+          <span><img src="assets/icons/bbc-world.png" alt="" />BBC World Service</span>
           <span><img src="assets/icons/atom-bank.png" alt="" />Atom bank</span>
-          <span>Playwright</span>
-          <span>Charles Proxy</span>
-          <span>CI / CD</span>
+          <span><img src="assets/icons/playwright.svg" alt="" />Playwright</span>
+          <span><img src="assets/icons/charles.png" alt="" />Charles Proxy</span>
+          <span><img src="assets/icons/github-actions.png" alt="" />CI / CD</span>
           <span><img src="assets/icons/bbc-iplayer.png" alt="" />BBC iPlayer</span>
           <span><img src="assets/icons/bbc-sounds.png" alt="" />BBC Sounds</span>
           <span><img src="assets/icons/bbc-news.png" alt="" />BBC News</span>
           <span><img src="assets/icons/bbc-sport.png" alt="" />BBC Sport</span>
-          <span>BBC World Service</span>
+          <span><img src="assets/icons/bbc-world.png" alt="" />BBC World Service</span>
           <span><img src="assets/icons/atom-bank.png" alt="" />Atom bank</span>
-          <span>Playwright</span>
-          <span>Charles Proxy</span>
-          <span>CI / CD</span>
+          <span><img src="assets/icons/playwright.svg" alt="" />Playwright</span>
+          <span><img src="assets/icons/charles.png" alt="" />Charles Proxy</span>
+          <span><img src="assets/icons/github-actions.png" alt="" />CI / CD</span>
         </div>
       </div>
     </div>
@@ -198,10 +198,17 @@
 
         <article class="tile reveal">
           <div class="tile__media tile__media--appicon tile__media--news" aria-hidden="true">
-            <img class="tile__appicon" src="assets/icons/bbc-news.png" alt="" />
+            <div class="icon-stack">
+              <img class="tile__appicon" src="assets/icons/bbc-news.png" alt="" />
+              <div class="icon-stack__minis">
+                <img src="assets/icons/bbc-cymru.png" alt="" />
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="64" height="64" rx="14" fill="#b80000"/><text x="32" y="41" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="19" fill="#fff">&#1593;&#1585;&#1576;&#1610;</text></svg>
+                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img"><rect width="64" height="64" rx="14" fill="#b80000"/><text x="32" y="41" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="17" fill="#fff">&#2361;&#2367;&#2344;&#2381;&#2342;&#2368;</text></svg>
+              </div>
+            </div>
           </div>
           <div class="tile__row"><h3 class="tile__name">BBC News</h3><span class="tag tag--muted">QA</span></div>
-          <p class="tile__desc">Breaking news at scale — testing a fast-moving, content-heavy app.</p>
+          <p class="tile__desc">Breaking news at scale — including the language services: Cymru Fyw, Arabic, Hindi and more.</p>
         </article>
 
         <article class="tile reveal">
@@ -214,22 +221,7 @@
 
         <article class="tile reveal">
           <div class="tile__media tile__media--appicon tile__media--world" aria-hidden="true">
-            <svg class="tile__appicon" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" role="img">
-              <rect width="96" height="96" rx="22" fill="#101820"/>
-              <g fill="#fff">
-                <rect x="18" y="16" width="16" height="16" rx="2"/>
-                <rect x="40" y="16" width="16" height="16" rx="2"/>
-                <rect x="62" y="16" width="16" height="16" rx="2"/>
-              </g>
-              <g font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="13" fill="#101820">
-                <text x="21" y="29">B</text><text x="43" y="29">B</text><text x="65" y="29">C</text>
-              </g>
-              <g stroke="#fff" fill="none" stroke-width="2.5" opacity=".92">
-                <circle cx="48" cy="61" r="18"/>
-                <ellipse cx="48" cy="61" rx="8" ry="18"/>
-                <path d="M31 55h34M31 67h34"/>
-              </g>
-            </svg>
+            <img class="tile__appicon" src="assets/icons/bbc-world.png" alt="" />
           </div>
           <div class="tile__row"><h3 class="tile__name">BBC World Service</h3><span class="tag tag--muted">QA</span></div>
           <p class="tile__desc">Global news across languages — testing for a worldwide audience.</p>
@@ -268,6 +260,27 @@
           <ul class="feature__list">
             <li><strong>SIT suites</strong> — created and maintained the system integration test suites covering the bank's core journeys.</li>
             <li><strong>Biometrics testing</strong> — Face ID, Touch ID and fingerprint authentication journeys across the device estate.</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Previously: Key Group -->
+      <article class="feature feature--prev reveal">
+        <div class="feature__media feature__media--shot" aria-hidden="true">
+          <img src="assets/projects/key-group.png" alt="" />
+        </div>
+        <div class="feature__body">
+          <div class="feature__meta"><span class="tag tag--muted">Previously</span><span class="feature__kicker">Financial services</span></div>
+          <div class="feature__id">
+            <h3 class="feature__name">Key Group</h3>
+          </div>
+          <p class="feature__summary">
+            The UK's later-life lending specialists. Web testing where the users are retirees
+            making the biggest financial decision of their later lives.
+          </p>
+          <ul class="feature__list">
+            <li><strong>Key user journeys</strong> — mapped the journeys that matter across wearekeygroup.co.uk and tested them end to end.</li>
+            <li><strong>Business requirements</strong> — verified releases against the business requirements, not just the spec.</li>
           </ul>
         </div>
       </article>
