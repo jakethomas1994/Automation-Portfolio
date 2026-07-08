@@ -373,6 +373,7 @@ em { font-style: normal; color: var(--accent); }
 .tile__media--news   { background: radial-gradient(80% 90% at 50% 20%, color-mix(in srgb, #bb1919 22%, transparent), transparent 80%), var(--bg-tint); }
 .tile__media--sport  { background: radial-gradient(80% 90% at 50% 20%, color-mix(in srgb, #ffd400 32%, transparent), transparent 80%), var(--bg-tint); }
 .tile__media--world  { background: radial-gradient(80% 90% at 50% 20%, color-mix(in srgb, #2f5fd0 24%, transparent), transparent 80%), var(--bg-tint); }
+.tile__media--mosaic { background: radial-gradient(80% 90% at 50% 20%, color-mix(in srgb, #c06b52 24%, transparent), transparent 80%), var(--bg-tint); }
 .tile__media--appicon .tile__appicon {
   display: block;
   width: clamp(80px, 10vw, 104px); height: auto; aspect-ratio: 1;
